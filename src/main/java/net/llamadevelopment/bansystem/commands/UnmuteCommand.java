@@ -19,6 +19,12 @@ public class UnmuteCommand extends CommandManager {
     public UnmuteCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Unmute"), "Unmute a player.", "/unmute");
         this.plugin = plugin;
+        
+        // command params
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false)
+        });
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {
