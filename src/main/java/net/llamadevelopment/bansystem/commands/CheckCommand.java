@@ -21,6 +21,13 @@ public class CheckCommand extends CommandManager {
     public CheckCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Check"), "Check if a player is banned or muted.", "/check");
         this.plugin = plugin;
+        
+        // command parameters
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false),
+                new CommandParameter("type", false, new String[] {"ban", "mute"})
+        });
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {
@@ -45,6 +52,9 @@ public class CheckCommand extends CommandManager {
                                     sender.sendMessage(plugin.getConfig().getString("Messages.Prefix").replace("&", "§") + plugin.getConfig().getString("Messages.PlayerNotBanned").replace("&", "§"));
                                     return true;
                                 }
+                            } else {
+                                sender.sendMessage(plugin.getConfig().getString("Messages.Prefix").replace("&", "§") + plugin.getConfig().getString("Messages.PlayerNotBanned").replace("&", "§"));
+                                return true;
                             }
                             rs.close();
                             preparedStatement.close();
