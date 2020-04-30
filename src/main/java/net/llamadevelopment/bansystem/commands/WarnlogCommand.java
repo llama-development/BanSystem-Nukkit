@@ -16,6 +16,12 @@ public class WarnlogCommand extends CommandManager {
     public WarnlogCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Warnlog"), "See the history of a player.", "/warnlog");
         this.plugin = plugin;
+        
+        // command params
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false)
+        });
     }
 
 
