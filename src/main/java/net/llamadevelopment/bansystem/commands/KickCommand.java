@@ -11,6 +11,13 @@ public class KickCommand extends CommandManager {
     public KickCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Kick"), "Kick a player.", "/kick");
         this.plugin = plugin;
+        
+        // command params
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false),
+                new CommandParameter("reason", CommandParamType.TEXT, false)
+        });
     }
 
     public boolean execute(CommandSender sender, String s, String[] args) {
