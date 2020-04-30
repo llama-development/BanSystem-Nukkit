@@ -25,6 +25,14 @@ public class BanCommand extends CommandManager {
     public BanCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Ban"), "Ban a player.", "/ban");
         this.plugin = plugin;
+        
+        
+        // command parameters
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false),
+                new CommandParameter("ID", CommandParamType.INT, false)
+        });
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {
