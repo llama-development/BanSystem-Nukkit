@@ -22,6 +22,15 @@ public class TempmuteCommand extends CommandManager {
     public TempmuteCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Tempmute"), "Temporarily mute a player.", "/tempmute");
         this.plugin = plugin;
+        
+        // command params
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false),
+                new CommandParameter("type", false, new String[] {"days", "hours"}),
+                new CommandParameter("time", CommandParamType.INT, false),
+                new CommandParameter("reason", CommandParamType.TEXT, false)
+        });
     }
 
     public boolean execute(CommandSender sender, String s, String[] args) {
