@@ -33,14 +33,14 @@ public class MessageUtil {
 
     public static void sendBanHelp(CommandSender sender, BanSystem plugin) {
         int i = plugin.getConfig().getInt("BanReasons.Count");
-        for (int p = 1; p < i; p++) {
+        for (int p = 1; p <= i; p++) {
             sender.sendMessage(plugin.getConfig().getString("Messages.Prefix").replace("&", "§") + convertBanHelp(String.valueOf(p), plugin.getConfig().getString("BanReasons." + p + ".Reason")));
         }
     }
 
     public static void sendMuteHelp(CommandSender sender, BanSystem plugin) {
         int i = plugin.getConfig().getInt("MuteReasons.Count");
-        for (int p = 1; p < i; p++) {
+        for (int p = 1; p <= i; p++) {
             sender.sendMessage(plugin.getConfig().getString("Messages.Prefix").replace("&", "§") + convertMuteHelp(String.valueOf(p), plugin.getConfig().getString("MuteReasons." + p + ".Reason")));
         }
     }
