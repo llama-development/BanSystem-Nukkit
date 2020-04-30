@@ -26,6 +26,13 @@ public class MuteCommand extends CommandManager {
     public MuteCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Mute"), "Mute a player.", "/mute");
         this.plugin = plugin;
+        
+        // command params
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false),
+                new CommandParameter("ID", CommandParamType.INT, false)
+        });
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {
