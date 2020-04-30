@@ -16,6 +16,12 @@ public class MutelogCommand extends CommandManager {
     public MutelogCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Mutelog"), "See the history of a player.", "/mutelog");
         this.plugin = plugin;
+        
+        // command params
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false)
+        });
     }
 
 
