@@ -15,6 +15,13 @@ public class WarnCommand extends CommandManager {
     public WarnCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Warn"), "Warn a player.", "/warn");
         this.plugin = plugin;
+        
+        // command params
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false),
+                new CommandParameter("reason", CommandParamType.TEXT, false)
+        });
     }
 
     public boolean execute(CommandSender sender, String s, String[] args) {
@@ -26,8 +33,8 @@ public class WarnCommand extends CommandManager {
                 String kickMessage = MessageUtil.warnScreen(reason, getID(), sender.getName());
                 WarnManager.createWarning(args[0], reason, sender.getName());
                 WarnManager.updatePlayer(args[0]);
-                sender.sendMessage(plugin.getConfig().getString("Messages.Prefix").replace("&", "§") + plugin.getConfig().getString("Messages.WarnSuccess").replace("%player%", args[0]).replace("&", "§"));
                 if (player != null) {
+                    sender.sendMessage(plugin.getConfig().getString("Messages.Prefix").replace("&", "§") + plugin.getConfig().getString("Messages.WarnSuccess").replace("%player%", args[0]).replace("&", "§"));
                     player.kick(kickMessage, false);
                 } else {
                     sender.sendMessage(plugin.getConfig().getString("Messages.Prefix").replace("&", "§") + plugin.getConfig().getString("Messages.PlayerNotOnline").replace("&", "§"));
