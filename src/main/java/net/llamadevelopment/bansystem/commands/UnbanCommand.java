@@ -18,6 +18,12 @@ public class UnbanCommand extends CommandManager {
     public UnbanCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Unban"), "Unban a player.", "/unban");
         this.plugin = plugin;
+        
+        // command params
+        commandParameters.clear();
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false)
+        });
     }
 
     public boolean execute(CommandSender sender, String label, String[] args) {
