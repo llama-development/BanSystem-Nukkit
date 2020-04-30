@@ -16,6 +16,11 @@ public class BanlogCommand extends CommandManager {
     public BanlogCommand(BanSystem plugin) {
         super(plugin, plugin.getConfig().getString("Commands.Banlog"), "See the history of a player.", "/banlog");
         this.plugin = plugin;
+        
+        // command parameters
+        commandParameters.put("default", new CommandParameter[]{
+                new CommandParameter("player", CommandParamType.TARGET, false)
+        });
     }
 
 
