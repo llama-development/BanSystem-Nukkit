@@ -13,7 +13,7 @@ public class UnbanCommand extends Command {
     public UnbanCommand(String name) {
         super(name, "Cancel an active ban.");
         commandParameters.put("default", new CommandParameter[]{
-                new CommandParameter("player", CommandParamType.TEXT, false)
+                new CommandParameter("player", CommandParamType.TARGET, false)
         });
         setPermission("bansystem.command.unban");
     }
