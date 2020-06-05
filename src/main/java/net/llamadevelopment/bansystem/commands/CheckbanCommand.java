@@ -16,7 +16,7 @@ public class CheckbanCommand extends Command {
     public CheckbanCommand(String name) {
         super(name, "Check if a player is banned.");
         commandParameters.put("default", new CommandParameter[]{
-                new CommandParameter("player", CommandParamType.TEXT, false)
+                new CommandParameter("player", CommandParamType.TARGET, false)
         });
         setPermission("bansystem.command.checkban");
     }
